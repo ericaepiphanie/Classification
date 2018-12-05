@@ -1,0 +1,34 @@
+name: Erica Nikiema
+output_dir: '.'
+navbar:
+  title: Erica Nikiema
+  type: inverse
+  left:
+  - text: Home
+    icon: fa-home
+    href: index.html
+  - text: My CV 
+    menu:
+      - text: cv RMarkdown
+        href: cv.html
+      - text: CV
+        href: cv.pdf
+  - text: Projets
+    icon: fa-Projet
+    href: indice.html
+  right:
+  - icon: fa-envelope fa-lg
+    href: contact.html
+  - icon: fa-github fa-lg
+    href: https://www.facebook.com/epiphanie.nikiema
+  - icon: fa-linkedin fa-lg
+    href: https://linkedin.com/in/erica-nikiema-a28452158/
+  - icon: fa-facebook fa-lg
+    href: https://www.facebook.com/epiphanie.nikiema
+output:
+  html_document:
+    theme: yeti
+    highlight: textmate
+    css: styles.css
+    lib_dir: site_libs
+    self_contained: no

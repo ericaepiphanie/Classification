@@ -1,0 +1,112 @@
+---
+title: "Indice_de_stabilite"
+author: "Erica Nikièma"
+date: "2 décembre 2018"
+output:
+  html_document:
+    df_print: paged
+---
+
+```{r warning=FALSE, include=FALSE}
+library(mclust)
+```
+
+
+#Générer la fonction par Simulation de trois(3) normales multivariées.
+
+```{r}
+generfunction=function(moy,moy1,moy2,sd,sd1,sd2){
+  library(mvtnorm)
+  x1=rmvnorm(90,moy,sd)
+  x2=rmvnorm(160,moy1,sd1)
+  x3=rmvnorm(150,moy2,sd2)
+ x=rbind(x1,x2,x3)
+ x=cbind(c(1:400),x)
+  return(x)
+}
+```
+
+#Classification
+
+```{r}
+classifKmeans=function(x,k){
+  
+  library(stats)
+  classes=kmeans(x[,-1],k)
+  
+  classif=cbind.data.frame(x,as.factor(classes$cluster))
+  return(classif)
+}
+```
+
+#Tirer un échantillon des données initiales
+```{r}
+echantillon_indice=function(x,nbre){
+  
+  ech=sample(x[,1],nbre,replace = FALSE)
+  return(ech)
+}
+
+
+echantillon=function(x,ech){
+  
+  donnee_tiree=x[which(x[,1]%in%ech),]
+  return(donnee_tiree)
+}
+
+```
+
+#Comparer les deux partitions
+
+```{r}
+compar_partition=function(x,k,nbre_echantillon,col_index,col_partition){
+  classification1=classifKmeans(x,k)
+  indice=echantillon_indice(x,nbre_echantillon)
+  echantillon_0=echantillon(x,indice)
+  classification2=classifKmeans(echantillon_0,k)
+  donnee=cbind(x,classification1[,col_partition])
+  ajuste=donnee[which(donnee[,col_index]%in%indice),]
+   indice_rente=adjustedRandIndex(ajuste[,col_partition],classification2[,col_partition])
+  return(indice_rente)
+}
+
+```
+
+#Répéter le processus n fois et comparer les différentes partitions
+
+```{r}
+Repeter=function(comparaison_partition,n){
+  comparer=vector("numeric",n)
+for(i in 1:n){comparer[i]=compar_partition(data,3,120,1,6)}
+return(comparer)
+}
+```
+
+#Application des fonctions
+
+```{r}
+x=generfunction(c(100,10),c(30,1),c(-70,81),diag(c(1,1), ncol=2),diag(c(1,1)                                         ,ncol=2),diag(c(1,1),ncol = 2))
+plot(x)
+```
+
+
+```{r eval=FALSE, include=FALSE}
+compar=compar_partition(x,3,320,1,4)
+indice=Repeter(compar,100)
+mean(indice)
+```
+
+
+#Exemple avec la base Iris
+
+```{r echo=TRUE}
+data(iris)
+plot(iris)
+data=cbind(c(1:150),iris)
+data=data[,-6]
+compar1=compar_partition(data,3,120,1,6)
+indice1=Repeter(compar1,100)
+indice1
+mean(indice1)
+```
+

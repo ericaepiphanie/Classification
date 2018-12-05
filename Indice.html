@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+<meta name="author" content="Erica Nikièma" />
+
+
+<title>Indice_de_stabilite</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/yeti.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+<link href="site_libs/font-awesome-5.0.13/css/fa-svg-with-js.css" rel="stylesheet" />
+<script src="site_libs/font-awesome-5.0.13/js/fontawesome-all.min.js"></script>
+<script src="site_libs/font-awesome-5.0.13/js/fa-v4-shims.min.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 45px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+
+.section h2 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h3 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h4 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h5 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h6 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Erica Nikiema</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-home"></span>
+     
+    Home
+  </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    My CV
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="cv.html">cv RMarkdown</a>
+    </li>
+    <li>
+      <a href="cv.pdf">CV</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="indice.html">
+    <span class="fa fa-Projet"></span>
+     
+    Projets
+  </a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="contact.html">
+    <span class="fa fa-envelope fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://www.facebook.com/epiphanie.nikiema">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://linkedin.com/in/erica-nikiema-a28452158/">
+    <span class="fa fa-linkedin fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://www.facebook.com/epiphanie.nikiema">
+    <span class="fa fa-facebook fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Indice_de_stabilite</h1>
+<h4 class="author"><em>Erica Nikièma</em></h4>
+<h4 class="date"><em>2 décembre 2018</em></h4>
+
+</div>
+
+
+<div id="generer-la-fonction-par-simulation-de-trois3-normales-multivariees." class="section level1">
+<h1>Générer la fonction par Simulation de trois(3) normales multivariées.</h1>
+<pre class="r"><code>generfunction=function(moy,moy1,moy2,sd,sd1,sd2){
+  library(mvtnorm)
+  x1=rmvnorm(90,moy,sd)
+  x2=rmvnorm(160,moy1,sd1)
+  x3=rmvnorm(150,moy2,sd2)
+ x=rbind(x1,x2,x3)
+ x=cbind(c(1:400),x)
+  return(x)
+}</code></pre>
+</div>
+<div id="classification" class="section level1">
+<h1>Classification</h1>
+<pre class="r"><code>classifKmeans=function(x,k){
+  
+  library(stats)
+  classes=kmeans(x[,-1],k)
+  
+  classif=cbind.data.frame(x,as.factor(classes$cluster))
+  return(classif)
+}</code></pre>
+</div>
+<div id="tirer-un-echantillon-des-donnees-initiales" class="section level1">
+<h1>Tirer un échantillon des données initiales</h1>
+<pre class="r"><code>echantillon_indice=function(x,nbre){
+  
+  ech=sample(x[,1],nbre,replace = FALSE)
+  return(ech)
+}
+
+
+echantillon=function(x,ech){
+  
+  donnee_tiree=x[which(x[,1]%in%ech),]
+  return(donnee_tiree)
+}</code></pre>
+</div>
+<div id="comparer-les-deux-partitions" class="section level1">
+<h1>Comparer les deux partitions</h1>
+<pre class="r"><code>compar_partition=function(x,k,nbre_echantillon,col_index,col_partition){
+  classification1=classifKmeans(x,k)
+  indice=echantillon_indice(x,nbre_echantillon)
+  echantillon_0=echantillon(x,indice)
+  classification2=classifKmeans(echantillon_0,k)
+  donnee=cbind(x,classification1[,col_partition])
+  ajuste=donnee[which(donnee[,col_index]%in%indice),]
+   indice_rente=adjustedRandIndex(ajuste[,col_partition],classification2[,col_partition])
+  return(indice_rente)
+}</code></pre>
+</div>
+<div id="repeter-le-processus-n-fois-et-comparer-les-differentes-partitions" class="section level1">
+<h1>Répéter le processus n fois et comparer les différentes partitions</h1>
+<pre class="r"><code>Repeter=function(comparaison_partition,n){
+  comparer=vector(&quot;numeric&quot;,n)
+for(i in 1:n){comparer[i]=compar_partition(data,3,120,1,6)}
+return(comparer)
+}</code></pre>
+</div>
+<div id="application-des-fonctions" class="section level1">
+<h1>Application des fonctions</h1>
+<pre class="r"><code>x=generfunction(c(100,10),c(30,1),c(-70,81),diag(c(1,1), ncol=2),diag(c(1,1)                                         ,ncol=2),diag(c(1,1),ncol = 2))
+plot(x)</code></pre>
+<p><img src="Indice_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+</div>
+<div id="exemple-avec-la-base-iris" class="section level1">
+<h1>Exemple avec la base Iris</h1>
+<pre class="r"><code>data(iris)
+plot(iris)</code></pre>
+<p><img src="Indice_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<pre class="r"><code>data=cbind(c(1:150),iris)
+data=data[,-6]
+compar1=compar_partition(data,3,120,1,6)
+indice1=Repeter(compar1,100)
+indice1</code></pre>
+<pre><code>##   [1] 0.9767547 0.9752026 0.4478330 0.9747741 0.9751906 1.0000000 1.0000000
+##   [8] 0.4407459 0.4421160 1.0000000 1.0000000 1.0000000 1.0000000 0.9752026
+##  [15] 1.0000000 0.9750551 0.4582601 0.9750067 0.4425621 0.4366776 0.4594419
+##  [22] 1.0000000 0.4150845 1.0000000 1.0000000 1.0000000 1.0000000 0.4423832
+##  [29] 0.4289656 0.4547344 0.9536658 1.0000000 0.9755474 0.4626923 0.9792686
+##  [36] 0.4413344 0.6183527 0.9763738 1.0000000 0.4341762 0.4359563 0.4283008
+##  [43] 0.4540957 0.4417194 0.8661975 0.9310184 0.9275017 0.9759124 1.0000000
+##  [50] 1.0000000 0.4297211 0.9751010 1.0000000 0.9768155 0.9750696 0.4535440
+##  [57] 0.4356066 0.9744127 0.8606288 0.9758336 0.4429463 1.0000000 0.4360238
+##  [64] 1.0000000 0.4464483 0.4408482 0.4295394 0.9749574 0.4414353 1.0000000
+##  [71] 1.0000000 0.4484892 0.4109247 1.0000000 0.4191226 0.4514494 1.0000000
+##  [78] 0.9745043 0.9757235 1.0000000 0.9752026 0.4360255 0.4498560 0.9752997
+##  [85] 0.9740825 0.9764696 1.0000000 0.9009833 1.0000000 1.0000000 0.4420259
+##  [92] 1.0000000 0.4588196 0.9758226 1.0000000 1.0000000 1.0000000 0.9762035
+##  [99] 0.9753611 0.8375430</code></pre>
+<pre class="r"><code>mean(indice1)</code></pre>
+<pre><code>## [1] 0.7870094</code></pre>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

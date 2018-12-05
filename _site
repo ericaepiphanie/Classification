@@ -1,0 +1,43 @@
+name: Erica Nikiema
+output_dir: '.'
+navbar:
+  title: Erica Nikiema
+  type: inverse
+  left:
+  - text: Home
+    icon: fa-home
+    href: index.html
+  - text: Teaching
+    menu: 
+      - text: Bayesian Statistics
+        href: https://malouche.github.io/bayesianstatistics/index.html
+      - text: Python 
+        href: https://malouche.github.io/teachingpython/index.html
+      - text: Big Data
+        href: https://malouche.github.io/bigdata2018/
+  - text: R Tips
+    menu:
+      - text: Reports and Slides
+      - href: https://malouche.github.io/ReportSlidesWithR/
+  - text: Softwares/Apps
+    href: apps.html
+  - text: Talks
+    href: slides.html
+  - text: My CV
+    href: dhafermalouche_cvOct2018.html
+  right:
+  - icon: fa-envelope fa-lg
+    href: contact.html
+  - icon: fa-github fa-lg
+    href: http://github.com/malouche
+  - icon: fa-linkedin fa-lg
+    href: https://www.linkedin.com/in/dhafer-malouche-b54629b/
+  - icon: fa-facebook fa-lg
+    href: https://www.facebook.com/dhafer.malouche
+output:
+  html_document:
+    theme: yeti
+    highlight: textmate
+    css: styles.css
+    lib_dir: site_libs
+    self_contained: no
